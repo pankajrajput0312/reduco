@@ -14,7 +14,7 @@ predictor =  CustomVisionPredictionClient("https://pankaj.cognitiveservices.azur
 # camera.release()
 with open("capture.png", mode ='rb') as captured_image:
     print("load image... and predict ")
-    results = predictor.classify_image("c22b7174-dd80-457b-829e-4d05496aee33", "Iteration2", captured_image)
+    results = predictor.classify_image("c22b7174-dd80-457b-829e-4d05496aee33", "Iteration3", captured_image)
     # print(results)
     for prediction in results.predictions:
         print("\t" + prediction.tag_name +": {0:.2f}%".format(prediction.probability * 100))

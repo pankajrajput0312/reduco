@@ -24,16 +24,16 @@ def get_weather_data():
     wind_spd = api_data['wind']['speed']
     date_time = datetime.now().strftime("%d %b %Y | %I:%M:%S %p")
 
-    print ("-------------------------------------------------------------")
-    print ("Weather Stats for - {}  || {}".format(location.upper(), date_time))
-    print ("-------------------------------------------------------------")
-    print("minm_temp:  ", minm_temp)
-    print("maxm_temp: ", maxm_temp)
-    print("pressure: ", pressure)
-    print("humidity: ", humidity)
-    print("feels_like: ", feels_like)
-    print("weather_desc: ", weather_desc)
-    print("wind_spd: ", wind_spd)
+    # print ("-------------------------------------------------------------")
+    # print ("Weather Stats for - {}  || {}".format(location.upper(), date_time))
+    # print ("-------------------------------------------------------------")
+    # print("minm_temp:  ", minm_temp)
+    # print("maxm_temp: ", maxm_temp)
+    # print("pressure: ", pressure)
+    # print("humidity: ", humidity)
+    # print("feels_like: ", feels_like)
+    # print("weather_desc: ", weather_desc)
+    # print("wind_spd: ", wind_spd)
     return (minm_temp, maxm_temp, pressure, humidity, weather_desc, wind_spd)
 
 

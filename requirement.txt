@@ -1,0 +1,8 @@
+azure
+numpy
+opencv-contrib-python
+azure-storage-blob
+azure-mgmt-storage==10.0.0
+requests
+datetime
+azure-cognitiveservices-vision-customvision
