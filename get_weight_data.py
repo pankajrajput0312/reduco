@@ -18,4 +18,4 @@ while(1):
 
     # Tell the device connected over the serial port that we recevied the data!
     # The b at the beginning is used to indicate bytes!
-    serialPort.write("Thank you for sending data \r\n")
+    #serialPort.write("Thank you for sending data \r\n")
