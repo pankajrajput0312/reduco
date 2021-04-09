@@ -28,7 +28,7 @@ def digit_number(image):
     cv2.imwrite('capture.png', image)
     digit = ""
     with open("capture.png", mode ='rb') as captured_image:
-        print("load digit image... and predict ")
+        # print("load digit image... and predict ")
         results = predictor.classify_image("c22b7174-dd80-457b-829e-4d05496aee33", "Iteration3", captured_image)
         maxm_percentage = 0.0
         for prediction in results.predictions:
@@ -38,19 +38,18 @@ def digit_number(image):
 #             print("\t" + prediction.tag_name +": {0:.2f}%".format(prediction.probability * 100))    
     return digit
 def get_digits(collection_of_image):
-#     digit_dict ={"Zero":0, "One":1, "Two":2, "Three":3, "Four":4, "Five":5, "Six":6, "Seven":7, "Eight":8, "Nine":9 }
-#     no_of_digit =len(collection_of_image)
-#     weight = 0
-#     factor = 1
-#     for i,image in enumerate(collection_of_image):
-#         number = digit_number(image)
-#         weight+=digit_dict[number]*factor
-#         factor*=10
+    digit_dict ={"Zero":0, "One":1, "Two":2, "Three":3, "Four":4, "Five":5, "Six":6, "Seven":7, "Eight":8, "Nine":9 }
+    no_of_digit =len(collection_of_image)
+    weight = 0
+    factor = 1
+    for i,image in enumerate(collection_of_image):
+        number = digit_number(image)
+        weight+=digit_dict[number]*factor
+        factor*=10
     
-#     weight = weight*0.001
+    weight = weight*0.001
         
-#     return weight
-    return 0.252
+    return weight
 
 
 # In[11]:
@@ -104,19 +103,19 @@ def detect_weight(image):
             print(i, final_digit_contour)
             if(i==len(digitCnts)-2):
                 final_digit_contour.append(digitCnts[i+1])
-                print(i,final_digit_contour)
+                # print(i,final_digit_contour)
             i+=1
             
     necessary_digit_region = []
     for (x,y,w,h ) in final_digit_contour:
         digit_region = roi[y:y+h, x:x+w]
         necessary_digit_region.append(digit_region)
-        print(x,y,w,h)
+        # print(x,y,w,h)
         roi = cv2.rectangle(roi, (x,y), (x+w,y+h), (255, 0,0), 2)
         plt.imshow(roi)
         
     output = weight_image.copy()
-    print(final_digit_contour)
+    # print(final_digit_contour)
 #     plt.imshow(mask)
 #     plt.imshow(necessary_digit_region[0])
     weight = get_digits(necessary_digit_region) 
@@ -129,16 +128,5 @@ def detect_weight(image):
 
 image = cv2.imread("weighing_scale.jpg")
 weight = detect_weight(image)
-
-
-# In[5]:
-
-
-print(weight)
-
-
-# In[ ]:
-
-
 
 
