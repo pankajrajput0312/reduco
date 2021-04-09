@@ -87,13 +87,14 @@ def update_file(vegetable, weight):
 
 import cv2
 
-camera = cv2.VideoCapture(0)
-camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-ret, image = camera.read()
-if(ret == False):
-    print("break")
-
+# camera = cv2.VideoCapture(0)
+# camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+# camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+# ret, image = camera.read()
+# if(ret == False):
+#     print("break")
+img = cv2.imred("./capture.png")
+image = cv2.resize(img, (640, 480))
 vegetable_name = vegetable_name(image)
 weight = detect_weight(image)
 update_file(vegetable_name, weight)
