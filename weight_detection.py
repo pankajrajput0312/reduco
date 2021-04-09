@@ -25,6 +25,9 @@ def detect_weight_region(image):
     return (0,0,image.shape[0],image.shape[1] )
 
 def digit_number(image):
+
+    credentials = ApiKeyCredentials(in_headers = {"Prediction-Key":"bf595a2cb1854d988a1f9d26834cd4e2"})
+    predictor =  CustomVisionPredictionClient("https://pankaj.cognitiveservices.azure.com/", credentials)
     cv2.imwrite('capture.png', image)
     digit = ""
     with open("capture.png", mode ='rb') as captured_image:
@@ -38,18 +41,19 @@ def digit_number(image):
 #             print("\t" + prediction.tag_name +": {0:.2f}%".format(prediction.probability * 100))    
     return digit
 def get_digits(collection_of_image):
-    digit_dict ={"Zero":0, "One":1, "Two":2, "Three":3, "Four":4, "Five":5, "Six":6, "Seven":7, "Eight":8, "Nine":9 }
-    no_of_digit =len(collection_of_image)
-    weight = 0
-    factor = 1
-    for i,image in enumerate(collection_of_image):
-        number = digit_number(image)
-        weight+=digit_dict[number]*factor
-        factor*=10
+    # digit_dict ={"Zero":0, "One":1, "Two":2, "Three":3, "Four":4, "Five":5, "Six":6, "Seven":7, "Eight":8, "Nine":9 }
+    # no_of_digit =len(collection_of_image)
+    # weight = 0
+    # factor = 1
+    # for i,image in enumerate(collection_of_image):
+    #     number = digit_number(image)
+    #     weight+=digit_dict[number]*factor
+    #     factor*=10
     
-    weight = weight*0.001
+    # weight = weight*0.001
         
-    return weight
+    # return weight
+    return 0.252
 
 
 # In[11]:
