@@ -15,7 +15,7 @@ from azure.cognitiveservices.vision.customvision.prediction import CustomVisionP
 from msrest.authentication import ApiKeyCredentials
 
 
-# In[13]:
+
 
 
 def get_date_time():
@@ -26,14 +26,12 @@ def get_date_time():
     return (date,time)
 
 
-# In[4]:
 
-
-def vegetable_name(image):
+def vegetable_name(img_name):
     credentials = ApiKeyCredentials(in_headers = {"Prediction-Key":"bf595a2cb1854d988a1f9d26834cd4e2"})
     predictor =  CustomVisionPredictionClient("https://pankaj.cognitiveservices.azure.com/", credentials)
-    cv2.imwrite('capture.png', image)
-    with open("./capture.png", mode ='rb') as captured_image:
+    # cv2.imwrite('capture., image)
+    with open(img_name, mode ='rb') as captured_image:
         # print("load image... and predict ")
         results = predictor.classify_image("c22b7174-dd80-457b-829e-4d05496aee33", "Iteration3", captured_image)
         vegetable = ""
@@ -44,9 +42,6 @@ def vegetable_name(image):
                 maxm_percentage = prediction.probability
             # print("\t" + prediction.tag_name +": {0:.2f}%".format(prediction.probability * 100))
     return vegetable
-
-
-# In[5]:
 
 
 def update_file(vegetable, weight):
@@ -93,12 +88,14 @@ import cv2
 # ret, image = camera.read()
 # if(ret == False):
 #     print("break")
-img = cv2.imred("./capture.png")
+img_name = "./onion5.jpeg"
+img = cv2.imread(img_name)
 image = cv2.resize(img, (640, 480))
-vegetable_name = vegetable_name(image)
-weight = detect_weight(image)
+vegetable_name = vegetable_name(img_name)
+weight = detect_weight(img_name)
+print(vegetable_name, weight)
 update_file(vegetable_name, weight)
-camera.release()
+# camera.release()
 
 
 # In[ ]:
